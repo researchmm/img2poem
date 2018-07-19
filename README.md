@@ -12,7 +12,8 @@ MultiM-Poem.json: image and poem pairs
 		"poem": str,
 		"image_url": str,
 		"id": int
-	}
+	},
+	...
 ]
 
 UniM-Poem.json: poem corpus
@@ -20,5 +21,6 @@ UniM-Poem.json: poem corpus
 	{
 		"poem": str,
 		"id": int
-	}
+	},
+	...
 ]
