@@ -7,6 +7,8 @@ Environment: Tensorflow1.6
 Both datasets are formatted in JSON files.
 
 MultiM-Poem.json: image and poem pairs
+
+```json
 [
 	{
 		"poem": str,
@@ -15,8 +17,11 @@ MultiM-Poem.json: image and poem pairs
 	},
 	...
 ]
+```
 
 UniM-Poem.json: poem corpus
+
+```
 [
 	{
 		"poem": str,
@@ -24,3 +29,4 @@ UniM-Poem.json: poem corpus
 	},
 	...
 ]
+```
