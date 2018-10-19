@@ -2,15 +2,15 @@
 
 
 ## Environment:
-(It is recommended to install the dependencies under Conda environment.)
-python2.7
-tensorflow1.6
-mxnet
-opencv
-scikit-image
-tqdm
-colorama
-flask
+(It is recommended to install the dependencies under Conda environment.)  
+python2.7  
+tensorflow1.6  
+mxnet  
+opencv  
+scikit-image  
+tqdm  
+colorama  
+flask  
 
 ## Model
 Please download models from https://1drv.ms/u/s!AkLgJBAHL_VFgSyyfpeGyGFZux56 and put it under "code/".
