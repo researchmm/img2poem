@@ -1,8 +1,21 @@
 # img2poem
 
-Environment: Tensorflow1.6
 
-# Data
+## Environment:
+(It is recommended to install the dependencies under Conda environment.)
+python2.7
+tensorflow1.6
+mxnet
+opencv
+scikit-image
+tqdm
+colorama
+flask
+
+## Model
+Please download models from https://1drv.ms/u/s!AkLgJBAHL_VFgSyyfpeGyGFZux56 and put it under "code/".
+
+## Data
 
 Both datasets are formatted in JSON files.
 
