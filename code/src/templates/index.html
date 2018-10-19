@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image to Poem</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="/static/css/jquery.Jcrop.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.Jcrop.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/sprintf.js"></script>
+    <script type="text/javascript">
+      function getUrl(file) {
+        var url = null;
+        if (window.createObjectURL!=undefined) {
+          url = window.createObjectURL(file);
+        }
+        else if (window.URL!=undefined) {
+          url = window.URL.createObjectURL(file);
+        }
+        else if (window.webkitURL!=undefined) {
+          url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+      }
+      $(document).ready(function() {
+
+        $("#select").click(function() {
+          $("#selectReal").click();
+          
+        });
+
+        $("#add").click(function() {
+           $("#addReal").click();
+        });
+
+
+        jQuery(function($) {
+
+          $("#selectReal").change(function() {
+            var imgurl = getUrl(this.files[0]);
+            var size = this.files[0].size;
+            var dan = "B";
+            if (size > 1000) {
+              size /= 1000;
+              dan = "KB";
+            }
+            if (size > 1000) {
+              size /= 1000;
+              dan = "MB";
+            }
+            //$("#filename").text(sprintf("%s    %.2f%s", this.files[0].name, size, dan));
+            $("#progress").find(".progress-bar").attr(
+              "style", "min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+            $("#resultinfo").fadeOut();
+            $("#fileinfo").fadeIn();
+
+            // japi.destroy();
+            $("#target").attr("src", imgurl).attr("style", "");
+            // $("#target").Jcrop({
+            //   onSelete: showCoords
+            // }, function() {
+            //   japi = this
+            // });
+            $("#preReal").click()
+            $("#predict").addClass("disabled");
+            
+          });
+          
+
+        $("#addReal").change(function() {
+
+
+
+            var fd = new FormData();
+            $.ajax({
+              url:"/add",
+              type:"POST",
+              data:fd,
+              processData:false,
+              contentType:false,
+              // xhr:function() {
+              //   // var xhrobj = $.ajaxSettings.xhr();
+              //   // if (xhrobj.upload) {
+              //   //   xhrobj.upload.addEventListener("progress", function(event) {
+              //   //     var percent = 0;
+              //   //     var position = event.loaded||event.position;
+              //   //     var total = event.total||event.totalSize;
+              //   //     if (event.lengthComputable) {
+              //   //       percent = Math.ceil(position * 1.0 / total * 100);
+              //   //     }
+              //   //     $("#progress").find(".progress-bar").attr(
+              //   //       "style", sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+              //   //     if (percent == 100) {
+              //   //       $("#progress").find(".progress-bar").addClass("progress-bar-success").addClass("progress-bar-striped").addClass("active").text("procesing");
+              //   //     }
+
+              //   //   });
+              //   // }
+              //   // return xhrobj;
+              // },
+              success:function(data) {
+                  
+                // $("#select").removeClass("disabled");
+                // $("#predict").removeClass("disabled");
+                // $("#fileinfo").fadeOut();
+                // $("#resultinfo").fadeIn();
+
+                // $("#progress").find(".progress-bar").removeClass("progress-bar-success").removeClass("progress-bar-striped").removeClass("active");
+
+                // var d = eval(data);
+                // var result=d.result;
+                // for (var i = 0; i < 5; i++) {
+                //   var id = result[i].id;
+                //   var tag = result[i].tag;
+                //   var score = result[i].score;
+                //   $("#item"+(i+1)).find(".media-heading").text(tag)
+                //   $("#item"+(i+1)).find(".progress-bar").attr(
+                //     "style", sprintf("min-width:2em;width:%d%%", score)).attr("aria-valuenow", sprintf("%d", score)).text(sprintf("%d%%", score));
+                //   $("#item"+(i+1)).attr("flowerid",""+id);
+                //   $("#item"+(i+1)).find(".media-object").attr("src", sprintf("/static/img/typical_image/%d.jpg", id, id))
+                // }
+              }
+            });
+            var imgurl = getUrl(this.files[0]);
+            var size = this.files[0].size;
+            var dan = "B";
+            if (size > 1000) {
+              size /= 1000;
+              dan = "KB";
+            }
+            if (size > 1000) {
+              size /= 1000;
+              dan = "MB";
+            }
+            $("#filename").text(sprintf("%s    %.2f%s", this.files[0].name, size, dan));
+            $("#progress").find(".progress-bar").attr(
+              "style", "min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+            $("#resultinfo").fadeOut();
+            $("#fileinfo").fadeIn();
+
+            // japi.destroy();
+            $("#target").attr("src", imgurl).attr("style", "");
+
+            $("#preReal1").click()
+            $("#select").addClass("disabled");
+            $("#predict").removeClass("disabled");
+
+          });
+
+          $("#preReal").click(function() {
+            // $("#select").addClass("disabled");
+            // $(this).addClass("disabled");
+
+            var files = $("#selectReal")[0].files;
+            var fd = new FormData();
+            fd.append("file", files[0]);
+            $.ajax({
+              url:"/reco",
+              type:"POST",
+              data:fd,
+              processData:false,
+              contentType:false,
+              xhr:function() {
+                var xhrobj = $.ajaxSettings.xhr();
+                if (xhrobj.upload) {
+                  xhrobj.upload.addEventListener("progress", function(event) {
+                    var percent = 0;
+                    var position = event.loaded||event.position;
+                    var total = event.total||event.totalSize;
+                    if (event.lengthComputable) {
+                      percent = Math.ceil(position * 1.0 / total * 100);
+                    }
+                    $("#progress").find(".progress-bar").attr(
+                      "style", sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                    if (percent == 100) {
+                      $("#progress").find(".progress-bar").addClass("progress-bar-success").addClass("progress-bar-striped").addClass("active").text("procesing");
+                    }
+
+                  });
+                }
+                return xhrobj;
+              },
+              success:function(data) {
+                // $("#select").removeClass("disabled");
+                // $("#predict").removeClass("disabled");
+                $("#fileinfo").fadeOut();
+                $("#resultinfo").fadeIn();
+
+                // $("#progress").find(".progress-bar").removeClass("progress-bar-success").removeClass("progress-bar-striped").removeClass("active");
+
+                var d = eval(data);
+                var result=d.result;
+                // alert(result);
+                $('#poem').text(result);
+              }
+            });
+          });
+        });
+      })
+    </script>
+    <style type="text/css">
+      li {
+        cursor: pointer;
+      }
+    </style>
+   </head>
+   <body>
+
+     <div class="container">
+       <div class="row">
+         <div class="col-md-6 col-md-offset-3">
+            <br><br>
+            <div class="row">
+              <div class="col-md-3">
+                <input type="file" style="display:none" id="selectReal">
+                <button class="btn btn-primary btn-lg" id="select">Select</button>
+              </div>
+              <div class="col-md-3">
+                <input type="file" style="display:none" id="addReal">
+                <button class="btn btn-primary btn-lg" id="add">Add</button>
+              </div>
+              <div class="col-md-3 col-md-offset-3">
+                <input type="file" style="display:none" id="preReal">
+                <input type="file" style="display:none" id="preReal1">
+                <button class="btn btn-success btn-lg" style="float:right" id="predict">Merge</button>
+              </div>
+            </div>
+            <br>
+            <div class="panel panel-default" id="fileinfo" style="display:none;">
+              <div class="panel-body">
+                <p id="filename">AAAAA.jpg   10.5MB</p>
+                <div class="progress" id="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width:2em;width:0%">
+                    0%
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+       </div>
+     </div>
+     <p id = "poem"></p>
+
+   </body>
+ </html>

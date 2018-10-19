@@ -1,0 +1,12 @@
+Parameter Name Mapping
+
+caffe:
+['conv1_1', 'conv1_2', 'conv2_1', 'conv2_2', 'conv3_1', 'conv3_2', 'conv3_3', 'conv4_1', 'conv4_2', 'conv4_3', 'conv5_1', 'conv5_2', 'conv5_3', 'fc6', 'fc7', 'fc8']
+
+MXNet:
+arg_params:
+['conv2_1_bias', 'fc7_weight', 'conv4_2_bias', 'conv5_2_bias', 'conv2_2_bias', 'fc6_bias', 'conv4_3_bias', 'conv5_2_weight', 'fc6_weight', 'conv5_3_bias', 'conv5_1_weight', 'conv4_1_bias', 'fc8_weight', 'conv4_3_weight', 'conv5_1_bias', 'conv3_1_weight', 'conv3_2_weight', 'conv1_2_bias', 'conv2_1_weight', 'conv3_2_bias', 'conv5_3_weight', 'conv3_1_bias', 'conv1_1_weight', 'fc7_bias', 'conv3_3_bias', 'conv2_2_weight', 'conv1_2_weight', 'conv3_3_weight', 'conv1_1_bias', 'conv4_2_weight', 'conv4_1_weight', 'fc8_bias']
+
+
+aux_params:
+[]
