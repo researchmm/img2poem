@@ -13,6 +13,7 @@ Full text available at: https://arxiv.org/abs/1804.08473
 ### Introduction
 
 The Img2poem model is a deep neural network that learns how to generate poems from images. For example:
+![](example.png)
 
 ### Architecture
 ![](framework.png)
@@ -78,3 +79,10 @@ BBBBB
 CCCC
 ```
 Note: you may get different results. Some variation between different models is expected.
+
+### Web Demo
+We also prepare a web demo, which is more user friendly. To run such demo, please run
+```bash
+python server.py
+```
+under "code/src/" folder. Then you can open http://127.0.0.1:5000 to access the it.
