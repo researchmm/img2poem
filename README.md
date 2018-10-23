@@ -42,6 +42,13 @@ The Img2poem model is a deep neural network that learns how to generate poems fr
 * flask
 
 ### Prepare the Training Data
+
+| Name | #Poem | #Line/poem | #Word/line |
+| :------:| :------: | :------: | :-----: |
+| MultiM-Poem | 8,292 | 7.2 | 5.7 |
+| UniM-Poem | 93,265 | 5.7 | 6.2 |
+| MultiM-Poem(Ex) | 26,161 | 5.4 | 5.9 |
+
 Both datasets are formatted in JSON files.
 
 MultiM-Poem.json: image and poem pairs
