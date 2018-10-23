@@ -92,11 +92,21 @@ Type in the relative path to the test image in the console and the poem will be 
 
 Example output:
 ```txt
-AAAAA
-BBBBB
-CCCC
+the sun was shining on the sea
+shining on the moon
+he saw the moon rose
+her voice was singing
+she sits in beauty gay
+red red rose striped eyes
+love with a child
+love with grace
+a little flower
+a butterfly love
+love a love
+to find a flower
+every day to be
+to find 
 ```
-Note: you may get different results. Some variation between different models is expected.
 
 ## Results
 ![](results.png)
