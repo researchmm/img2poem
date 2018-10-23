@@ -15,6 +15,7 @@ Full text available at: https://arxiv.org/abs/1804.08473
 The Img2poem model is a deep neural network that learns how to generate poems from images. For example:
 
 ### Architecture
+![](framework.png)
 
 ## Getting Started
 
