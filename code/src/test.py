@@ -1,6 +1,5 @@
 import extract_feature
 import generate_poem
-import argparse
 import time
 
 def get_poem(image_file):
