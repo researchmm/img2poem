@@ -83,8 +83,13 @@ Please download models from https://1drv.ms/u/s!AkLgJBAHL_VFgSyyfpeGyGFZux56 and
 ## Generating Poems
 The following command line will generate poem for an image.
 ```bash
-python test.py --input-file input.jpg
+python test.py
 ```
+Type in the relative path to the test image in the console and the poem will be generated.
+```bash
+../images/test.jpg
+```
+
 Example output:
 ```txt
 AAAAA
@@ -104,4 +109,4 @@ We also prepare a web demo, which is more user friendly. To run such demo, pleas
 ```bash
 python server.py
 ```
-under "code/src/" folder. Then you can open http://127.0.0.1:5000 to access the it.
+under "code/src/" folder. Then you can open http://127.0.0.1:8086 to access the it.
