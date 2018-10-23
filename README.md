@@ -1,7 +1,9 @@
 # Beyond Narrative Description: Generating Poetry from Images by Multi-Adversarial Training
 An implementation of the image-to-poem model described in the paper:
 "Beyond Narrative Description: Generating Poetry from Images by Multi-Adversarial Training."
+
 Bei Liu, Jianlong Fu, Makoto P. Kato, Masatoshi Yoshikawa
+
 Full text available at: https://arxiv.org/abs/1804.08473
 
 ## Contents
