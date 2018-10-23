@@ -14,7 +14,6 @@ Full text available at: https://arxiv.org/abs/1804.08473
     * [Install Required Packages](#install-required-packages)
     * [Prepare the Training Data](#prepare-the-training-data)
     * [Download Trained Model](#download-trained-model)
-* [Training a Model](#training-a-model)
 * [Generating Poems](#generating-poems)
 * [Web Demo](#web-demo)
 
@@ -75,6 +74,8 @@ UniM-Poem.json: poem corpus
     ...
 ]
 ```
+
+![](dataset.png)
 
 ### Download Trained Model
 Please download models from https://1drv.ms/u/s!AkLgJBAHL_VFgSyyfpeGyGFZux56 and put it under "code/".
