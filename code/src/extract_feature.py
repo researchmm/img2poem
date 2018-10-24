@@ -90,7 +90,7 @@ def get_sentiment_feature(img):
     outputs = sentiment_model.get_outputs()[0].asnumpy()
     return outputs
 
-def get_feature(image_file):
+def extract_feature(image_file):
     img = cv2.imread(image_file)
     obj_feat = get_obj_feature(img)
     scene_feat = get_scene_feature(img)
