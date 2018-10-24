@@ -3,6 +3,18 @@ import generate_poem
 import time
 
 def get_poem(image_file):
+    """Generate a poem from the image whose filename is `image_file`
+
+    Parameters
+    ----------
+    image_file : str
+        Path to the input image
+
+    Returns
+    -------
+    str
+        Generated Poem
+    """
     img_feature = extract_feature.get_feature(image_file)
     return generate_poem.generate(img_feature)
 
