@@ -13,5 +13,5 @@ model = SeqGAN(sess, batch_size)
 
 model.load_params(ckpt_file)
 
-def generate(img_feature):
+def generate_poem(img_feature):
     return model.test_one_image(img_feature)
