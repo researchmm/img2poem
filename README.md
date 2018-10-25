@@ -91,20 +91,13 @@ Type in the relative path to the test image in the console and the poem will be 
 
 Example output:
 ```txt
-the sun was shining on the sea
-shining on the moon
-he saw the moon rose
-her voice was singing
-she sits in beauty gay
-red red rose striped eyes
-love with a child
-love with grace
-a little flower
-a butterfly love
-love a love
-to find a flower
-every day to be
-to find 
+the sun is singing in the forest wind
+and let us go to the wind of the sun
+let the sun be free
+let us be the storm of heaven
+and let us be the slow sun
+we keep our own strength together
+we live in love and hate
 ```
 
 ## Results
