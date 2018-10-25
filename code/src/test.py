@@ -1,10 +1,11 @@
 import nn_process
 import time
+import os
 import sys
 
-print ('Loading Extract Feature Module...')
+print ('Loading Extracting Feature Module...')
 extract_feature = nn_process.create('extract_feature')
-print ('Loading Generate Poem Module...')
+print ('Loading Generating Poem Module...')
 generate_poem = nn_process.create('generate_poem')
 
 # default path to an image
@@ -12,6 +13,8 @@ DEFAULT_PATH = '../images/test.jpg'
 
 if sys.version_info[0] >= 3:
     raw_input = input
+else:
+    FileNotFoundError = IOError
 
 def get_poem(image_file):
     """Generate a poem from the image whose filename is `image_file`
@@ -26,6 +29,11 @@ def get_poem(image_file):
     str
         Generated Poem
     """
+    # Check whether the file exists
+    assert os.path.exists(image_file), FileNotFoundError(
+            'File `{}` not found.'.format(image_file))
+    assert not os.path.isdir(image_file), FileNotFoundError(
+            'The path should be a filename instead of `{}`.'.format(image_file))
     img_feature = extract_feature(image_file)
     return generate_poem(img_feature)
 
