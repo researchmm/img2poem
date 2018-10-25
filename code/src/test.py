@@ -3,9 +3,9 @@ import time
 import os
 import sys
 
-print ('Loading Extract Feature Module...')
+print ('Loading Extracting Feature Module...')
 extract_feature = nn_process.create('extract_feature')
-print ('Loading Generate Poem Module...')
+print ('Loading Generating Poem Module...')
 generate_poem = nn_process.create('generate_poem')
 
 # default path to an image
