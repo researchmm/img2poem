@@ -92,6 +92,19 @@ def get_sentiment_feature(img):
 
 def extract_feature(image_file):
     img = cv2.imread(image_file)
+    assert img is not None, IOError(
+            'The file `{}` may be not an image'.format(image_file))
+    # img.shape: H, W, T
+    if img.ndim == 2:
+        # gray image
+        img = np.stack([img, img, img], axis=2)
+    else:
+        if img.ndim == 3 and img.shape[2] in [3, 4]:
+            if img.shape[2] == 4:
+                # remove alpha channel
+                img = img[:, :, :3]
+        else:
+            raise Exception('Invalid Image `{}` whose shape is {}'.format(image_file, img.shape))
     obj_feat = get_obj_feature(img)
     scene_feat = get_scene_feature(img)
     sentiment_feat = get_sentiment_feature(img)

@@ -8,8 +8,11 @@ def create(module_name):
         pipe.send('Okay :-)')
         while 1:
             data = pipe.recv()
-            poem = func(data)
-            pipe.send(poem)
+            try:
+                poem = func(data)
+                pipe.send(poem)
+            except Exception as e:
+                pipe.send(e)
 
     pipes = multiprocessing.Pipe() # W/R
     proc = multiprocessing.Process(target=pipe_process, args=(pipes[1],))
@@ -19,7 +22,10 @@ def create(module_name):
 
     def handle(img_feature):
         pipes[0].send(img_feature)
-        return pipes[0].recv()
+        msg = pipes[0].recv()
+        if isinstance(msg, Exception):
+            raise msg
+        return msg
     return handle
 
 if __name__ == '__main__':
