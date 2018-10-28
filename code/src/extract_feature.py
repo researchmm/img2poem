@@ -59,9 +59,6 @@ object_model.load_params('../model/object.params')
 scene_model = get_mod()
 scene_model.load_params('../model/scene.params')
 
-scene_model = get_mod()
-scene_model.load_params('../model/scene.params')
-
 sentiment_model = get_mod(sym = symbol_sentiment.get_sym(), img_len = 227)
 sentiment_model.load_params('../model/Sentiment.params')
 
