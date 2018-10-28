@@ -23,13 +23,14 @@ class VGG:
         for i, b in enumerate(blocks):
             x = self.vgg_block(x, num_convs = b[0], channels = b[1], block_id = i + 1)
 
-        x = mx.sym.FullyConnected(data = x, num_hidden = 4096, flatten = True, name = 'fc6')
+        x = mx.sym.flatten(x)
+        x = mx.sym.FullyConnected(data = x, num_hidden = 4096, name = 'fc6')
         x = mx.sym.Activation(data = x, act_type = 'relu', name = 'relu6')
         x = mx.sym.Dropout(data = x, p = dropout, name = 'dropout6')
 
-        x = mx.sym.FullyConnected(data = x, num_hidden = 4096, flatten = True, name = 'fc7')
+        x = mx.sym.FullyConnected(data = x, num_hidden = 4096, name = 'fc7')
         x = mx.sym.Activation(data = x, act_type = 'relu', name = 'relu7')
         x = mx.sym.Dropout(data = x, p = dropout, name = 'dropout7')
 
-        x = mx.sym.FullyConnected(data = x, num_hidden = num_classes, flatten = True, name = 'fc8')
+        x = mx.sym.FullyConnected(data = x, num_hidden = num_classes, name = 'fc8')
         return mx.symbol.SoftmaxOutput(data = x, name = 'softmax')

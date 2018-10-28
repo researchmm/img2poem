@@ -33,9 +33,10 @@ def get_sym():
     x = mx.sym.Activation(data = x, act_type = 'relu')
     x = mx.sym.Pooling(data = x, kernel = (3, 3), pool_type = 'max', stride = (2, 2), pooling_convention = 'full')
 
-    x = mx.sym.FullyConnected(data = x, num_hidden = 4096, flatten = True, name = 'fc6_A')
+    x = mx.sym.flatten(x)
+    x = mx.sym.FullyConnected(data = x, num_hidden = 4096, name = 'fc6_A')
     x = mx.sym.Activation(data = x, act_type = 'relu', name = 'relu6_A')
 
-    x = mx.sym.FullyConnected(data = x, num_hidden = 4096, flatten = True, name = 'fc7_A')
+    x = mx.sym.FullyConnected(data = x, num_hidden = 4096, name = 'fc7_A')
     x = mx.sym.Activation(data = x, act_type = 'relu', name = 'relu7_A')
     return x
