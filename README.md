@@ -1,6 +1,7 @@
 # Beyond Narrative Description: Generating Poetry from Images by Multi-Adversarial Training
 An implementation of the image-to-poem model described in the paper:
 "Beyond Narrative Description: Generating Poetry from Images by Multi-Adversarial Training."
+Accepted as the best paper of ACM MM2018.
 
 Bei Liu, Jianlong Fu, Makoto P. Kato, Masatoshi Yoshikawa
 
