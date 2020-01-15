@@ -35,7 +35,6 @@ The Img2poem model is a deep neural network that learns how to generate poems fr
 * tensorflow1.6  
 * mxnet  
 * opencv  
-* scikit-image  
 * tqdm  
 * colorama  
 * flask

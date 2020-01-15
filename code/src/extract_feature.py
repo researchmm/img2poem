@@ -2,7 +2,6 @@ import mxnet as mx
 import numpy as np
 import cv2
 from vgg_mx.symbol_vgg import VGG
-from caffe_io import Transformer
 from collections import namedtuple
 import symbol_sentiment
 import config
@@ -13,12 +12,9 @@ feature_names = ['object', 'scene', 'Sentiment']
 Batch = namedtuple('Batch', ['data'])
 
 def data_trans(img, shape, mu):
-    transformer = Transformer({'data': shape})
-    transformer.set_transpose('data', (2,0,1))
-    transformer.set_mean('data', mu)
-    transformer.set_raw_scale('data', 255)
-    transformed_image = transformer.preprocess('data', img)
-    return transformed_image
+    transformed_img = img.transpose((2, 0, 1)) * 255
+    transformed_img -= mu[:, np.newaxis, np.newaxis];
+    return transformed_img
 
 def crop_lit_centor(img, mu, img_len = 224):
     [n,m,_]=img.shape
@@ -28,7 +24,7 @@ def crop_lit_centor(img, mu, img_len = 224):
     else:
         n = int(n*256/m)
         m = 256
-    return data_trans(cv2.resize(img,(m,n))/255.0,(1,3,n,m), mu)[:,int((n-img_len)/2):int((n+img_len)/2),int((m-img_len)/2):int((m+img_len)/2)]
+    return data_trans(cv2.resize(img,(m,n))/255.0, shape=(1,3,n,m), mu=mu)[:,int((n-img_len)/2):int((n+img_len)/2),int((m-img_len)/2):int((m+img_len)/2)]
 
 def get_mod(output_name = 'relu7_output', sym = None, img_len = 224):
     if sym is None:
